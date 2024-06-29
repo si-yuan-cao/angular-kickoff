@@ -6,10 +6,10 @@
 </div>
 
 <div class="courses">
-  @for (course of courses; track course; let i = $index) {
+  @for (course of courses; track $index) {
   <course-card
     [course]="course"
-    [index]="i + 1"
+    [index]="$index + 1"
     (courseSelected)="onCourseSelected($event)"
   />
   }

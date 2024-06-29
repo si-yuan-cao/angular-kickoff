@@ -6,7 +6,16 @@
 </div>
 
 <div class="courses">
-  <course-card [course]="coreCourses"></course-card>
-  <course-card [course]="rxjsCourses"></course-card>
-  <course-card [course]="ngrxCourses"></course-card>
+  <course-card
+    (courseSelected)="onCourseSelected($event)"
+    [course]="coreCourses"
+  ></course-card>
+  <course-card
+    (courseSelected)="onCourseSelected($event)"
+    [course]="rxjsCourses"
+  ></course-card>
+  <course-card
+    (courseSelected)="onCourseSelected($event)"
+    [course]="ngrxCourses"
+  ></course-card>
 </div>

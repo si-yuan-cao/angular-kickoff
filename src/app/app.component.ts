@@ -11,4 +11,8 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'angular-kickoff';
+
+  onKeyUp(newTitle: string) {
+    this.title = newTitle;
+  }
 }

@@ -8,10 +8,10 @@ import { Course } from '../model/course';
 })
 export class CourseCardComponent {
   @Input({ required: true }) course?: Course;
-  @Output() courseSelected = new EventEmitter<Course>();
+  @Output('courseSelected') courseEmitter = new EventEmitter<Course>();
 
   onCourseViewed() {
     console.log('Course card was viewed');
-    this.courseSelected.emit(this.course);
+    this.courseEmitter.emit(this.course);
   }
 }

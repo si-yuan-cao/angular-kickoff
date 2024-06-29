@@ -6,4 +6,8 @@ import { COURSES } from '../db-data';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {}
+export class AppComponent {
+  coreCourses = COURSES[0];
+  rxjsCourses = COURSES[1];
+  ngrxCourses = COURSES[2];
+}

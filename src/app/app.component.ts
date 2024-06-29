@@ -8,7 +8,7 @@ import { Course } from './model/course';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  courses = COURSES;
+  courses: Course[] = [...COURSES];
 
   onCourseSelected(course: Course) {
     console.log('Card was clicked', course);

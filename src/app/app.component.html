@@ -6,7 +6,19 @@
 </div>
 
 <div class="courses">
-  @for (course of courses; track course.id) {
-  <course-card [course]="course" (courseSelected)="onCourseSelected($event)" />
-  }
+  @for (course of courses; track course.id; let count = $count; let first =
+  $first; let even = $even; let odd = $odd;) {
+  <h1>Count: {{ count }}</h1>
+  <course-card
+    [course]="course"
+    [index]="$index"
+    [class.is-first]="first"
+    [class.is-last]="$last"
+    [class.is-even]="even"
+    [class.is-odd]="odd"
+    (courseSelected)="onCourseSelected($event)"
+  />
+  } @empty {
+  <h1>No courses available</h1>
+  No courses available }
 </div>

@@ -1,7 +1,7 @@
 <div class="course-card" [ngClass]="cardClasses()">
   <div class="course-title">{{ index || "" }} {{ course?.description }}</div>
 
-  <img width="300" alt="Angular Logo" [src]="course?.iconUrl" />
+  <img #courseImage width="300" alt="Angular Logo" [src]="course?.iconUrl" />
 
   <div class="course-description">
     @switch (course?.category) { @case ('BEGINNER') {

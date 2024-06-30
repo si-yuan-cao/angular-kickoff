@@ -15,4 +15,10 @@ export class CourseCardComponent {
     console.log('Course card was viewed');
     this.courseEmitter.emit(this.course);
   }
+
+  cardClasses() {
+    return {
+      beginner: this.course?.category === 'BEGINNER',
+    };
+  }
 }

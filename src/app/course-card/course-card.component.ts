@@ -9,7 +9,7 @@ import { Course } from '../model/course';
 export class CourseCardComponent {
   @Input({ required: true }) course?: Course;
   @Output('courseSelected') courseEmitter = new EventEmitter<Course>();
-  @Input({ required: true }) index?: number;
+  @Input() index?: number;
 
   onCourseViewed() {
     console.log('Course card was viewed');

@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import { COURSES } from '../db-data';
 import { Course } from './model/course';
 import { CourseCardComponent } from './course-card/course-card.component';
@@ -10,25 +16,28 @@ import { CourseCardComponent } from './course-card/course-card.component';
 })
 export class AppComponent implements AfterViewInit {
   courses: Course[] = [...COURSES];
-  course = COURSES[0];
+  @ViewChildren(CourseCardComponent, { read: ElementRef })
+  cards?: QueryList<ElementRef>;
 
-  @ViewChild('cardRef1', { read: ElementRef }) card1?: ElementRef;
-  @ViewChild('cardRef2') card2?: CourseCardComponent;
-  @ViewChild('container') containerDiv?: ElementRef;
-  @ViewChild('courseImage') courseImage?: ElementRef;
-
-  constructor() {
-    console.log('containerDiv', this.containerDiv);
-  }
+  constructor() {}
 
   ngAfterViewInit(): void {
-    console.log('containerDiv -- ngAfterViewInit', this.containerDiv);
-    console.log('courseImage -- ngAfterViewInit', this.courseImage);
+    console.log(this.cards);
+    this.cards?.changes.subscribe((cards) => console.log(cards));
   }
 
-  onCourseSelected(course: Course) {
-    console.log('card1', this.card1);
-    console.log('card2', this.card2);
-    console.log('containerDiv', this.containerDiv);
+  onCourseSelected(course: Course) {}
+
+  onCoursesEdited() {
+    this.courses.push({
+      id: 8,
+      description: 'Angular Testing Course',
+      iconUrl:
+        'https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-testing-small.png',
+      longDescription:
+        'In-depth guide to Unit Testing and E2E Testing of Angular Apps',
+      category: 'INTERMEDIATE',
+      lessonsCount: 10,
+    });
   }
 }

@@ -1,4 +1,5 @@
 <div class="top-menu">
+  <button (click)="onCoursesEdited()">Edit Courses</button>
   <img
     class="logo"
     src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png"
@@ -6,14 +7,7 @@
 </div>
 
 <div class="courses" #container>
-  <course-card
-    #cardRef1
-    [course]="course"
-    (courseSelected)="onCourseSelected($event)"
-  />
-  <course-card
-    #cardRef2
-    [course]="courses[1]"
-    (courseSelected)="onCourseSelected($event)"
-  />
+  @for (course of courses; track $index) {
+  <course-card [course]="course" (courseSelected)="onCourseSelected($event)" />
+  }
 </div>

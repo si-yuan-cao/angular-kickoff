@@ -5,21 +5,8 @@
   />
 </div>
 
-<div class="demo">
-  <div>Start Date: {{ startDate | date : "MMM dd yyyy" }}</div>
-  <div>{{ title | titlecase }}</div>
-  <div>{{ price | number : "3.3-5" }}</div>
-  <div>{{ price | currency : "EUR" }}</div>
-  <div>Percentage: {{ rate | percent }}</div>
-  {{ courses | slice : 0 : 2 | json }}
-</div>
-
-@for (pair of course | keyvalue; track $index) {
-<h1>{{ pair.key }}: {{ pair.value }}</h1>
-}
-
 <div class="courses">
-  @for (course of courses | slice: 0: 2; track $index) {
+  @for (course of courses; track $index) {
   <course-card
     [course]="course"
     [index]="$index + 1"
